@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Cookies from "js-cookie";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "../styles/Home.module.css"
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,61 +15,73 @@ import Footer from '@/components/Footer'
 
 
 export default function Home() {
-  const { theme } = useTheme(); 
+  const { theme } = useTheme();
+  const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://nova-notions.vercel.app/");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const result = await response.json();
+        const recentPostsData = result.slice(0,1);
+        const recentPostsData2 = result.slice(1,3);
+        const recentPostsData3 = result.slice(3,8);
+        console.log(recentPostsData3)
+        setData(recentPostsData);
+        setData2(recentPostsData2);
+        setData3(recentPostsData3);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  const handleClick = (id) => {
+    Cookies.set("clickedPostId", id, { expires: 7 });
+  };
   return <>
   <main className={`${styles.main} bg-${theme}`}>
-    <div>
+    {data.map((item)=> (
+      <div key={item._id["$oid"]}>
       <div className={`${styles.img}`}>
-        <Image src={img1} alt="" />
+        <img src={item.img} alt="" />
       </div>
       <div className={`${styles.data}`}>
         <p>Health</p>
-        <Link href="/"><h1>What is Health</h1></Link>
+        <Link href="/blogpage" onClick={() => handleClick(item._id["$oid"])}><h1>{item.title}</h1></Link>
         <div className={`${styles.userdata}`}>
-          <Image src={userimg1} alt="" className="user" />
           <div>
-            <p className={`${styles.name}`}>Ravi</p>
-            <p>|</p>
-            <p className={`${styles.time}`}>December 01, 2023</p>
+            <p className={`${styles.time}`}>{item.time}</p>
           </div>
         </div>
       </div>
     </div>
-    <div>
+    ))}
+    <div className={styles.homebannerimage}>
+    {data2.map((item)=> (
+      <div  key={item._id["$oid"]}>
       <div>
       <div className={`${styles.img}`}>
-        <Image src={img2} alt="" />
+        <img src={item.img} alt="" />
       </div>
       <div className={`${styles.data}`}>
         <p>Health</p>
-        <Link href="/"><h1>What is Health</h1></Link>
+        <Link href="/blogpage" onClick={() => handleClick(item._id["$oid"])}><h1>{item.title}</h1></Link>
         <div className={`${styles.userdata}`}>
-          <Image src={userimg1} alt="" className="user" />
           <div>
-            <p className={`${styles.name}`}>Ravi</p>
-            <p>|</p>
-            <p className={`${styles.time}`}>December 01, 2023</p>
+            <p className={`${styles.time}`}>{item.time}</p>
           </div>
         </div>
         </div>
       </div>
-      <div>
-      <div className={`${styles.img}`}>
-        <Image src={img3} alt="" />
-      </div>
-      <div className={`${styles.data}`}>
-        <p>Health</p>
-        <Link href="/"><h1>What is Health</h1></Link>
-        <div className={`${styles.userdata}`}>
-          <Image src={userimg1} alt="" className="user" />
-          <div>
-            <p className={`${styles.name}`}>Ravi</p>
-            <p>|</p>
-            <p className={`${styles.time}`}>December 01, 2023</p>
-          </div>
-        </div>
-        </div>
-      </div>
+    </div>
+    ))}
     </div>
   </main>
   <ThemeProvider>

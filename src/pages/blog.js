@@ -164,11 +164,11 @@ function Blog() {
                   </div>
                   <div className={`${styles.data1}`}>
                     <div className={`${styles.img1}`}>
-                      <img src={popularPosts[0]?.img} alt="" />
+                      <img src={popularPosts[0]?.img} alt=""/>
                     </div>
                     <div>
                       <p className={`${styles.time}`}>{popularPosts[0]?.time}</p>
-                      <Link href="/blogpage">
+                      <Link href="/blogpage"  onClick={() => handleClick(popularPosts[0]?._id["$oid"])}>
                         <h4>{popularPosts[0]?.title}</h4>
                       </Link>
                     </div>
@@ -187,11 +187,11 @@ function Blog() {
                   <div className={`${styles.datacontainer}`}>
                     {recentPosts.map((post) => (
                       <div key={post.id}>
-                        <Link href='/blogpage'>
+                        <Link href='/blogpage'  onClick={() => handleClick(post._id["$oid"])}>
                           <img src={post.img} />
                         </Link>
                         <div className={`${styles.recentdata}`}>
-                          <Link href='/blogpage'>
+                          <Link href='/blogpage'  onClick={() => handleClick(post._id["$oid"])}>
                             <h4
                               className={`text-${
                                 theme === "light" ? "dark" : "light"
