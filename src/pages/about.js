@@ -15,7 +15,10 @@ function about() {
       </div>
       <div className={`${styles.aboutusdata} text-${theme=='light'? 'dark':'light'}`}>
         <h1>I`m Ravi</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum amet id, officia in repellendus corporis tempora qui ipsam voluptatibus enim officiis quia? Cum dolor exercitationem quidem voluptates distinctio sunt repellendus?</p>
+        <p>A budding web developer with strong foundation in HTML, CSS, JavaScript, and Java. I am eager 
+to kickstart my career in web development and committed to continuous learning and growth. 
+Although I am a fresher, I am excited to apply my knowledge and contribute to innovative 
+projects</p>
       </div>
     </div>
   )
