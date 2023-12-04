@@ -430,7 +430,7 @@
   left: 0;
   padding: 0 0 100px 50px;
   color: white;
-  width: 350px;
+  width: 96%;
 }
 .data> p{
   /* border: 1px solid red; */
@@ -1217,5 +1217,10 @@ font-size: 17px;
   }
   .heading {
     padding: 30px 50px 0 55px;
+  }
+  .userdata div{
+    align-items: flex-start;
+    justify-content: flex-start;
+    opacity: 0.7;
   }
 }
