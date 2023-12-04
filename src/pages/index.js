@@ -31,7 +31,7 @@ export default function Home() {
         const recentPostsData = result.slice(0,1);
         const recentPostsData2 = result.slice(1,3);
         const recentPostsData3 = result.slice(3,8);
-        console.log(recentPostsData3)
+        // console.log(recentPostsData3)
         setData(recentPostsData);
         setData2(recentPostsData2);
         setData3(recentPostsData3);
