@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap/dist/js/bootstrap.min";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }) {
 
@@ -33,6 +34,21 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_GA_ID}`}
+      />
+
+      <Script id="google-analytics-script" strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_GA_ID}', {
+          page_path: window.location.pathname,
+          });
+    `}
+      </Script>
     <LoadingBar
         color='#f11946'
         progress={progress}
