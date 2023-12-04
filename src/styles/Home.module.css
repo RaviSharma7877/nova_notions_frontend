@@ -639,19 +639,20 @@
 
 .searchinput {
   /* position: relative; */
+  width: 100%;
 }
 .searchinput> input {
   width: 300px;
   height: 40px;
-  position: relative;
-  padding: 5px 15px;
+  position: absolute;
+  padding: 5px 0 5px 15px;
   color: black;
   /* border: 1px solid black; */
 }
 .searchinput> button {
   position: relative;
   top: 0;
-  left: 0px;
+  left: 250px;
   background-color: white;
   height: 40px;
   width: 50px;
@@ -1185,5 +1186,36 @@ font-size: 17px;
   }
   .blogpagemain {
     padding: 30px 15px 0 15px;
+  }
+  .logo {
+    width: 300px;
+  }
+  .navbar_nav li a {
+    padding: 8px 0px !important;
+  }
+  .cat {
+    width: 100%;
+    align-items: center !important;
+    /* padding-right: 10px; */
+  }
+  .cat div{
+    width: 100%;
+    align-items: center !important;
+    /* padding-right: 10px; */
+  }
+  .searchinput> input {
+    width: 90vw;
+    padding-left: 60px;
+  }
+  .searchinput> button {
+    position: relative;
+    top: 0;
+    left: 0px;
+    background-color: white;
+    height: 40px;
+    width: 50px;
+  }
+  .heading {
+    padding: 30px 50px 0 55px;
   }
 }
