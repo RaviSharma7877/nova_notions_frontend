@@ -30,7 +30,7 @@ export default function Home() {
         const result = await response.json();
         const recentPostsData = result.slice(0,1);
         const recentPostsData2 = result.slice(1,3);
-        const recentPostsData3 = result.slice(3,8);
+        const recentPostsData3 = result.slice(3,7);
         // console.log(recentPostsData3)
         setData(recentPostsData);
         setData2(recentPostsData2);
@@ -47,6 +47,7 @@ export default function Home() {
   };
   return <>
   <main className={`${styles.main} bg-${theme}`}>
+    <Link href='/mainpage'>mainpage</Link>
     {data.map((item)=> (
       <div key={item._id["$oid"]}>
       <div className={`${styles.img}`}>
