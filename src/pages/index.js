@@ -47,7 +47,6 @@ export default function Home() {
   };
   return <>
   <main className={`${styles.main} bg-${theme}`}>
-    <Link href='/mainpage'>mainpage</Link>
     {data.map((item)=> (
       <div key={item._id["$oid"]}>
       <div className={`${styles.img}`}>

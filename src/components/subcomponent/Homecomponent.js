@@ -23,7 +23,7 @@ export default function Homecomponent({ theme }) {
         }
 
         const result = await response.json();
-        const recentPostsData3 = result.slice(3,8);
+        const recentPostsData3 = result.slice(3,7);
         console.log(recentPostsData3)
         setData3(recentPostsData3);
       } catch (error) {
