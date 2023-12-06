@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head'
 import Cookies from "js-cookie";
 import React, { useState, useEffect, useRef } from "react";
